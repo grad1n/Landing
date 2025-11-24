@@ -1,0 +1,246 @@
+:root{
+    --bg: #c7cad1; /* был #ffffff — теперь лёгкий серый фон */
+    --muted:#6b7280;
+    --accent:#4c6ef5;
+    --primary:#80D0D6;
+    --radius:12px;
+    --container-padding:16px;
+    --max-width:980px;
+    --text:#111827;
+}
+
+*{box-sizing:border-box}
+html, body {
+    margin:0;
+    background:none;
+    color:var(--text);
+    font-family:'Tenor Sans', sans-serif;
+}
+
+.container{padding:0 var(--container-padding);max-width:var(--max-width);margin:0 auto;width:100%}
+.site-header{background:#fff;position:sticky;top:0;z-index:30;border-bottom:1px solid #eee}
+.header-row{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+.logo{font-weight:700}
+.logo.small{font-size:0.95rem}
+.btn{display:inline-block;padding:10px 14px;border-radius:10px;text-decoration:none;color:inherit;border:1px solid transparent;font-weight:600;font-size:0.95rem}
+.btn-primary{background:var(--primary);color:white}
+.btn-ghost{background:transparent;border:1px solid rgba(0,0,0,0.06);color:var(--text)}
+.btn-sm{padding:8px 10px;font-size:0.9rem}
+
+/* Hero */
+.hero{position:relative;background-size:cover;background-position:center;color:white;padding:48px 0 64px}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.35))}
+.hero-content{position:relative;z-index:2;display:flex;flex-direction:column;gap:12px}
+.hero h1{margin:0;font-size:1.5rem;line-height:1.05}
+.lead{margin:0;color:rgba(255,255,255,0.9)}
+
+/* Sections */
+.section{padding:28px 0}
+.section h2{margin:0 0 12px;font-size:1.25rem}
+
+/* Team */
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.card{background:#fff;padding:12px;border-radius:12px;box-shadow:0 2px 8px rgba(15,15,15,0.04)}
+.avatar{width:100%;height:140px;object-fit:cover;border-radius:8px}
+.muted{color:var(--muted);font-size:0.95rem}
+
+/* Procedures */
+.procedures-grid{display:grid;grid-template-columns:1fr;gap:12px}
+.proc-card{background:#fff;padding:12px;border-radius:12px;box-shadow:0 2px 8px rgba(15,15,15,0.04)}
+.proc-footer{display:flex;justify-content:space-between;align-items:center;margin-top:8px}
+.price{font-weight:700}
+
+/* Prices slider */
+.prices-wrap{position:relative;display:flex;align-items:center}
+.prices-slider{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:8px 0}
+.price-img{width:260px;height:360px;object-fit:cover;border-radius:10px;flex:0 0 auto;scroll-snap-align:center;border:1px solid #eee}
+.slide-btn{background:#fff;border:1px solid #eee;border-radius:8px;padding:6px 10px;margin:0 8px;cursor:pointer}
+.small{font-size:0.85rem}
+
+/* Advantages */
+.advantages{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
+
+/* Reviews */
+.reviews{display:flex;flex-direction:column;gap:10px}
+.review{background:#fff;padding:12px;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,0.03);margin:0}
+
+/* Form */
+.form{display:flex;flex-direction:column;gap:10px}
+.form label{display:flex;flex-direction:column;gap:6px}
+.form input,.form select,.form textarea{padding:10px;border-radius:8px;border:1px solid #e5e7eb;font-size:1rem}
+.form-actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.form-msg{margin-top:8px;color:green}
+
+/* Footer */
+.site-footer{background:#fafafa;padding:18px 0;border-top:1px solid #eee}
+.footer-row{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+
+/* Responsive: mobile-first -> tablets, desktop */
+@media(min-width:480px){
+  .hero h1{font-size:1.8rem}
+  .team-grid{grid-template-columns:repeat(3,1fr)}
+  .procedures-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(min-width:900px){
+  .container{padding:0 24px}
+  .hero{padding:72px 0 96px}
+  .hero h1{font-size:2.4rem}
+  .procedures-grid{grid-template-columns:repeat(3,1fr)}
+  .prices-slider{gap:18px}
+  .price-img{width:320px;height:420px}
+}
+
+/* Accessibility focus */
+a:focus,button:focus,input:focus,select:focus,textarea:focus{outline:3px solid rgba(59,130,246,0.18);outline-offset:2px}
+/* Стили кнопок слайдера — серые, минималистичные */
+.slide-btn{
+  background: #f3f4f6; /* светло-серый фон */
+  border: 1px solid #e5e7eb; /* граница */
+  color: #374151; /* тёмно-серый текст */
+  border-radius: 10px;
+  padding: 8px 10px;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+  transition: background .15s ease, transform .08s ease;
+}
+.slide-btn:hover{ background:#e9ecef; transform:translateY(-1px) }
+.slide-btn:active{ transform:translateY(0) }
+.slide-btn:focus{ outline: 3px solid rgba(55,65,81,0.12); outline-offset:2px }
+
+/* Иконки внутри кнопок: сделаем символы крупнее */
+.slide-btn::after{
+  font-size:1.4rem;
+  line-height:1;
+}
+
+/* Слегка затемнённая область вокруг слайдера на больших экранах */
+@media (min-width:720px){
+  .prices-wrap{ padding:8px; border-radius:12px; background:linear-gradient(180deg, rgba(243,244,246,0.6), rgba(255,255,255,0.4)); }
+}
+.team-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.team-card{position:relative;overflow:hidden;border-radius:12px;height:0;padding-bottom:100%;background:#ddd}
+.team-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+.card-caption{position:absolute;left:0;right:0;bottom:0;padding:12px;background:linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.55) 100%);color:#fff}
+.card-caption .name{font-weight:700}
+.card-caption .role{font-size:0.9rem;opacity:0.95}
+.hero-overlay { background: transparent; pointer-events: none; }
+
+.promo-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.promo-slider {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 8px 0;
+}
+
+.promo-img {
+  width: 280px;
+  height: 380px;
+  object-fit: cover;
+  border-radius: 12px;
+  flex: 0 0 auto;
+  scroll-snap-align: center;
+  border: 1px solid #e5e7eb;
+}
+
+
+body {
+    background-image: url("../images/back.jpg");
+    background-size: cover;         /* чтобы не растягивалось и не срезалось */
+    background-repeat: no-repeat;   /* отключить повторение */
+    background-attachment: fixed;   /* чтобы фон был статичным как в приложениях */
+    background-position: center;    /* центрирование */
+}
+
+.section,
+.container,
+header,
+footer {
+    background: transparent !important;
+}
+
+
+
+
+.logo img {
+  height: 100px;      /* можешь изменить под себя */
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.footer-left {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.footer-logo {
+  width: 120px;   /* подгони при необходимости */
+  height: auto;
+}
+
+.footer-right {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: right; /* чтобы ссылки были у правого края */
+}
+
+
+
+
+
+.reviews-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-top: 12px;
+}
+
+.reviews-slider {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 10px 0;
+}
+
+.review-img {
+  height: 380px;              /* фиксируем высоту */
+  width: auto;                /* ширина подстраивается */
+  flex: 0 0 auto;
+  border-radius: 12px;
+  scroll-snap-align: center;
+  object-fit: contain;        /* ВАЖНО! картинка полностью видна */
+  background: #fff;           /* чтобы вокруг были белые поля, если не помещается */
+  padding: 8px;               /* маленькая рамка для аккуратности */
+  border: 1px solid #e5e7eb;
+}
+
+/* Кнопки перелистывания */
+.review-btn {
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  color: #374151;
+  border-radius: 10px;
+  padding: 8px 10px;
+  cursor: pointer;
+  font-size: 1.5rem;
+  line-height: 1;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+  transition: background .15s ease, transform .08s ease;
+}
+
+.review-btn:hover { background:#e9ecef; transform:translateY(-1px); }
+.review-btn:active { transform:translateY(0); }
+.reviews-wrap {
+  max-width: 1000px;     /* регулируй под себя: 700–900 — идеально */
+  margin: 0 auto;       /* центрируем весь блок */
+}
